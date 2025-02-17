@@ -131,9 +131,12 @@ a {
 /* Hide scrollbar */
 .tm-sidebar {
   overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
 }
+
 .tm-sidebar::-webkit-scrollbar {
   /* WebKit */
   width: 0;
@@ -153,7 +156,7 @@ a {
   margin-right: 0;
 }
 
-.tm-main-nav > li > a {
+.tm-main-nav>li>a {
   color: white;
 }
 
@@ -195,9 +198,11 @@ a {
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.1;
   }
+
   100% {
     opacity: 1;
   }
@@ -222,7 +227,7 @@ a {
 
 .tm-social-link:hover,
 .tm-social-link:focus {
-  background-color: #069;
+  background-color: rgb(132, 16, 179);
   color: white;
 }
 
@@ -240,7 +245,7 @@ a {
 }
 
 .tm-section-icon {
-  color: #369;
+  color: #666;
   width: 120px;
   height: 120px;
   display: flex;
@@ -344,7 +349,7 @@ a {
 }
 
 .tm-gallery-item figure figcaption,
-.tm-gallery-item figure figcaption > a {
+.tm-gallery-item figure figcaption>a {
   position: absolute;
   top: 0;
   left: 0;
@@ -357,7 +362,7 @@ a {
 
 /* Anchor will cover the whole item by default */
 /* For some effects it will show as a button */
-.tm-gallery-item figure figcaption > a {
+.tm-gallery-item figure figcaption>a {
   z-index: 1000;
   text-indent: 200%;
   white-space: nowrap;
@@ -672,4 +677,53 @@ figure.effect-bubba:hover p {
   .tm-box-pad {
     padding: 50px 30px;
   }
+}
+
+.tm-services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.tm-service-item {
+  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tm-service-item:hover {
+  transform: translateY(-5px);
+}
+
+.tm-service-icon {
+  font-size: 40px;
+  color: #9627b9;
+  /* Tom de lilás/roxo da empresa */
+  margin-bottom: 10px;
+}
+
+.tm-service-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.tm-service-item p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Ajuste para o título "Nossos Serviços" */
+.tm-section-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #666;
+  /* Tom de lilás/roxo da empresa */
+  text-align: left;
+  margin-bottom: 20px;
 }
