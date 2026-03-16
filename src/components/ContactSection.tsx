@@ -2,22 +2,42 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { MessageCircle, Mail, MapPin, Instagram, Phone, Clock } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollReveal();
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) return;
 
     setStatus("sending");
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        "service_lj261ha",
+        "template_3l0y5ko",
+        {
+          from_name: formState.name,
+          from_email: formState.email,
+          to_name: "Equipe Someli Contabilidade",
+          message: formState.message,
+          reply_to: formState.email,
+        },
+        {
+          publicKey: "HGFKatXCyz7Fo4OA5",
+        }
+      );
+
       setStatus("success");
       setFormState({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 4000);
-    }, 1500);
+    } catch (error) {
+      console.error("Erro ao enviar mensagem via EmailJS", error);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
