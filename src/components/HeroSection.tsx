@@ -8,8 +8,7 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center pt-24 pb-16 bg-surface-deep overflow-hidden"
     >
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(217_91%_60%_/_0.15),_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(320_78%_64%_/_0.15),_transparent_60%)]" />
 
       <div className="container relative z-10 grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
@@ -26,7 +25,7 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-wrap gap-4">
             <Button variant="whatsapp" size="xl" asChild>
-              <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5585998431249" target="_blank" rel="noopener noreferrer">
                 <MessageCircle size={20} />
                 Falar no WhatsApp
               </a>

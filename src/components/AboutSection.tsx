@@ -1,5 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Shield, TrendingUp, Users } from "lucide-react";
+import { Shield, TrendingUp, Star } from "lucide-react";
 
 const AboutSection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -17,7 +17,7 @@ const AboutSection = () => {
           {[
             { icon: Shield, label: "Segurança", value: "100%" },
             { icon: TrendingUp, label: "Crescimento", value: "+40%" },
-            { icon: Users, label: "Clientes", value: "200+" },
+            { icon: Star, label: "Avaliação Google", value: "5.0 ★" },
           ].map(({ icon: Icon, label, value }, i) => (
             <div
               key={label}

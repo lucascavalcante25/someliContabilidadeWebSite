@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo-colorida-01.png";
 
 const SiteHeader = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,8 +29,8 @@ const SiteHeader = () => {
       }`}
     >
       <nav className="container flex items-center justify-between">
-        <a href="#home" className="text-2xl font-display font-bold text-foreground">
-          SOMELI<span className="text-primary">.</span>
+        <a href="#home">
+          <img src={logo} alt="SOMELI Assessoria Contábil" className="h-10" />
         </a>
 
         {/* Desktop nav */}

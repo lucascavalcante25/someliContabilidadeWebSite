@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { MessageCircle, Mail, MapPin, Instagram } from "lucide-react";
+import { MessageCircle, Mail, MapPin, Instagram, Phone, Clock } from "lucide-react";
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -13,7 +13,6 @@ const ContactSection = () => {
     if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) return;
 
     setStatus("sending");
-    // Simulated send
     setTimeout(() => {
       setStatus("success");
       setFormState({ name: "", email: "", message: "" });
@@ -49,20 +48,26 @@ const ContactSection = () => {
               {
                 icon: MessageCircle,
                 label: "WhatsApp",
-                value: "Falar no WhatsApp",
-                href: "https://wa.me/",
+                value: "(85) 99843-1249",
+                href: "https://wa.me/5585998431249",
+              },
+              {
+                icon: Phone,
+                label: "Telefone",
+                value: "(85) 99843-1249",
+                href: "tel:+5585998431249",
               },
               {
                 icon: Mail,
                 label: "Email",
-                value: "contato@someli.com.br",
-                href: "mailto:contato@someli.com.br",
+                value: "someli@someli.com.br",
+                href: "mailto:someli@someli.com.br",
               },
               {
                 icon: Instagram,
                 label: "Instagram",
-                value: "@someli.contabil",
-                href: "https://instagram.com/someli.contabil",
+                value: "@somelicontabilidade",
+                href: "https://www.instagram.com/somelicontabilidade/",
               },
               {
                 icon: MapPin,
@@ -70,12 +75,18 @@ const ContactSection = () => {
                 value: "Fortaleza, CE",
                 href: "#",
               },
+              {
+                icon: Clock,
+                label: "Horário",
+                value: "Seg–Sex · 08:00–17:00",
+                href: "#",
+              },
             ].map(({ icon: Icon, label, value, href }) => (
               <a
                 key={label}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="flex items-center gap-4 group"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
