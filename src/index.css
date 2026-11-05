@@ -117,3 +117,99 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground) / 0.5);
 }
+
+/* ---------- Animações do site ---------- */
+
+/* Entrada ao rolar: o componente adiciona .is-visible quando entra na tela. */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Entrada imediata do topo da página. */
+.reveal-in {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Formas desfocadas que flutuam no fundo do topo. */
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: flutuar 18s ease-in-out infinite;
+}
+@keyframes flutuar {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.08); }
+  66% { transform: translate(-30px, 25px) scale(0.95); }
+}
+
+.hero-dots {
+  opacity: 0.16;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+}
+
+/* Ilustração do topo */
+.hero-art { animation: boiar 7s ease-in-out infinite; }
+@keyframes boiar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+.hero-bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: crescer 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes crescer { from { transform: scaleY(0.05); } to { transform: scaleY(1); } }
+
+.hero-line {
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: desenhar 1.8s 0.6s ease-out forwards;
+}
+@keyframes desenhar { to { stroke-dashoffset: 0; } }
+
+.hero-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulsar 2.4s 2.2s ease-in-out infinite;
+}
+@keyframes pulsar { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+
+.hero-float { animation: boiar 6s 1s ease-in-out infinite; }
+.hero-float--late { animation-delay: 2.5s; }
+
+/* Botão flutuante do WhatsApp com onda */
+.whats-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid #25d366;
+  animation: onda 2.6s ease-out infinite;
+}
+@keyframes onda { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.6); opacity: 0; } }
+
+/* Zoom lento da foto da faixa de chamada */
+.cta-zoom { animation: zoom-lento 20s ease-in-out infinite alternate; }
+@keyframes zoom-lento { from { transform: scale(1); } to { transform: scale(1.08); } }
+
+/* Quem pede menos movimento vê tudo parado e já visível. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .reveal-in { opacity: 1; transform: none; }
+  .hero-line { stroke-dashoffset: 0; }
+}
